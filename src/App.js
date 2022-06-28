@@ -12,6 +12,8 @@ const SEARCH_API =
 
 function App() {
   const [movies, SetMovies] = useState([]);
+
+  // fetch movies data from API and set it to new state
   useEffect(() => {
     fetch(FEATURED_API)
       .then((res) => res.json())
@@ -23,7 +25,11 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="header">
+        <h2>MOVIES APP</h2>
+      </div>
+      {/* display a list of movies and pass props to Movie component  */}
+      <div className="movie-container">
         {movies.length > 0 &&
           movies.map((movie) => <Movie key={movie.id} {...movie} />)}
       </div>
