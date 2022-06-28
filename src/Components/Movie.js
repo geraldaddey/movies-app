@@ -2,6 +2,14 @@ import React from "react";
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 
+const setVoteClass = (vote) => {
+  if (vote >= 8) {
+    return "green";
+  } else if (vote >= 6) {
+    return "orange";
+  } else return "red";
+};
+
 const Movie = ({
   title,
   poster_path,
@@ -16,7 +24,7 @@ const Movie = ({
         <h3>{title}</h3>
         <div className="metadata">
           <span> Release Date: {release_date}</span>
-          <span>{vote_average}</span>
+          <span className={setVoteClass(vote_average)}>{vote_average}</span>
         </div>
       </div>
       <div className="movie-overview">
